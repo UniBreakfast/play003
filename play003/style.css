@@ -1,0 +1,124 @@
+/* to reset uncertain defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:focus {
+  outline: grey dotted  3px;
+}
+
+
+body {
+  /* for centering the main container */
+  display: flex;
+
+  min-height: 100vh;
+  font: bold 1rem Trebuchet MS, sans-serif;
+  background: #585555;
+}
+
+form {
+  /* for centering in the flex parent */
+  margin: auto;
+
+  /* for rounded corners */
+  border-radius: 40px;
+
+  padding: 30px 50px;
+
+  background: #F7EABE;
+  border: 2px solid black;
+
+  display: grid;
+  grid-gap: 15px;
+  grid-template:  "  lbl-l    login   login    either "
+                  "  lbl-m    mail     mail    either "
+                  "  lbl-p    pass     pass      .    "
+                  "response response response response"
+                  "    .     signup   signin     .    "
+}
+#lbl-l { /* login */
+  grid-area: lbl-l;
+  text-align: right;
+}
+#lbl-m { /* mail */
+  grid-area: lbl-m;
+  text-align: right;
+}
+#lbl-p { /* pass */
+  grid-area: lbl-p;
+  text-align: right;
+}
+#login {
+  grid-area: login;
+}
+#mail {
+  grid-area: mail;
+}
+#pass {
+  grid-area: pass;
+}
+#either {
+  grid-area: either;
+  width: 55px;
+  height: 81px;
+  padding: 0 6px;
+  background: #EEACA0;
+}
+#signup {
+  grid-area: signup;
+  background: #FAC710;
+}
+#signin {
+  grid-area: signin;
+  background: #8FD14F;
+}
+#response {
+  grid-area: response;
+  font-size: .9rem;
+  text-align: center;
+}
+
+label {
+  padding: 7px;
+}
+input {
+  text-align: center;
+  font: bold 1rem Trebuchet MS, sans-serif;
+  border: 2px solid black;
+  padding: 3px 0 5px;
+}
+button {
+  border: 2px solid black;
+  border-radius: 7px;
+  width: 150px;
+  height: 40px;
+  font: bold 1rem Trebuchet MS, sans-serif;
+}
+
+#pupScreen {
+  position: fixed;
+  display: none; /* switches to flex on click */
+  height: 100%;
+  width: 100%;
+  padding: 0 0 120px 299px;
+}
+#pupEither {
+  margin: auto;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 200px 55px;
+  background: #EEACA0;
+  border-radius: 40px;
+  border: 2px solid black;
+  padding: 20px 30px;
+  height: 180px;
+
+}
+#ok {
+  width: 55px;
+  height: 81px;
+  margin-top: 20px;
+  background: #F7EABE;
+}

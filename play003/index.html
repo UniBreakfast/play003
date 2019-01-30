@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=ru>
+<head>
+  <meta charset=UTF-8>
+  <meta name=viewport content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel=stylesheet href=style.css>
+  <script>
+    function ok_f(e) {
+      pupScreen.style.display = 'none'
+    }
+    function either_f(e) {
+      pupScreen.style.display = 'flex'
+      return false
+    }
+  </script>
+</head>
+<body>
+  <form>
+    <label for=login id=lbl-l>Логин:</label>
+    <label for=mail  id=lbl-m>Электронная почта:</label>
+    <label for=pass  id=lbl-p>Пароль:</label>
+    <input id=login value=Administrator>
+    <input id=mail type=email value=admin@support.com>
+    <input id=pass type=password value=asdflkjsadf>
+    <button id=either>или?</button>
+    <button id=signup onclick=return(false)>РЕГИСТРАЦИЯ</button>
+    <button id=signin onclick=return(false)>ВХОД</button>
+    <div id=response>
+      Одна форма для регистрации и входа! Введите ваши данные</div>
+  </form>
+  <div id=pupScreen>
+  <!-- <div id=pupScreen> -->
+    <div id=pupEither>
+      <span>Логин или Электронная почта - что-то одно обязательно. Если не привяжете Электронную почту, нельзя будет
+        восстановить
+        пароль в случае утраты.</span>
+      <button id=ok>Ok</button>
+      <!-- <button id=ok>Ok</button> -->
+    </div>
+  </div>
+  <script>
+    either.onclick = e =>either_f(e)
+    ok.onclick = pupScreen.onclick =
+      e =>  e.target==pupScreen || e.target==ok? ok_f(e) :0
+  </script>
+</body>
+</html>
