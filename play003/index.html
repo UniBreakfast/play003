@@ -6,13 +6,13 @@
   <title>Document</title>
   <link rel=stylesheet href=style.css>
   <script>
-    function ok_f(e) {
-      pupScreen.style.display = 'none'
+    function request(file, cb) {
+      const xhr = new XMLHttpRequest()
+      xhr.open('GET', file)
+      xhr.onload = () => cb(xhr.response)
+      xhr.send()
     }
-    function either_f(e) {
-      pupScreen.style.display = 'flex'
-      return false
-    }
+    request('state.json', response=>state=JSON.parse(response))
   </script>
 </head>
 <body>
@@ -20,12 +20,12 @@
     <label for=login id=lbl-l>Логин:</label>
     <label for=mail  id=lbl-m>Электронная почта:</label>
     <label for=pass  id=lbl-p>Пароль:</label>
-    <input id=login value=Administrator>
-    <input id=mail type=email value=admin@support.com>
-    <input id=pass type=password value=asdflkjsadf>
-    <button id=either>или?</button>
-    <button id=signup onclick=return(false)>РЕГИСТРАЦИЯ</button>
+    <input id=login>
+    <input id=mail type=email>
+    <input id=pass type=password>
     <button id=signin onclick=return(false)>ВХОД</button>
+    <button id=signup onclick=return(false)>РЕГИСТРАЦИЯ</button>
+    <button id=either>или?</button>
     <div id=response>
       Одна форма для регистрации и входа! Введите ваши данные</div>
   </form>
@@ -40,9 +40,13 @@
     </div>
   </div>
   <script>
-    either.onclick = e =>either_f(e)
-    ok.onclick = pupScreen.onclick =
-      e =>  e.target==pupScreen || e.target==ok? ok_f(e) :0
+    either.onclick = e => { pupScreen.style.display = 'flex'; return false }
+    ok.onclick = pupScreen.onclick = e =>
+      e.target==pupScreen || e.target==ok ? pupScreen.style.display = 'none' :0
+
+    signin.onclick = e => { check(); return false }
+
   </script>
+  <script src=script.js></script>
 </body>
 </html>

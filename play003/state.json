@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "login": "Alpha",
+      "pass": "Beta"
+    },
+    {
+      "mail": "user@mail.ua",
+      "pass": "@@@"
+    },
+    {
+      "login": "NiceGuy",
+      "mail": "guy@mail.com",
+      "pass": "nice"
+    }
+  ]
+}
