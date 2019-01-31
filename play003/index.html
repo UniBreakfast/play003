@@ -25,7 +25,7 @@
     <input id=pass type=password>
     <button id=signin onclick=return(false)>ВХОД</button>
     <button id=signup onclick=return(false)>РЕГИСТРАЦИЯ</button>
-    <button id=either>или?</button>
+    <button id=either onclick=return(false)>или?</button>
     <div id=response>
       Одна форма для регистрации и входа! Введите ваши данные</div>
   </form>
@@ -48,24 +48,23 @@
     signup.onclick = e => { SignUP(); return false }
 
   </script>
-  <script src=script.js></script>
 
   <div id=main>
-    <nav id=timing>
+    <nav id=timing onclick=>
       <button id=go>пуск</button>
-      <button id=pause>пауза</button>
-      <button id=sec>1 сек.</button>
-      <button id=min>1 мин.</button>
-      <button id=hour>1 час</button>
-      <button id=day>1 день</button>
-      <button id=secM class=ML>+</button>
-      <button id=secL class=ML>–</button>
-      <button id=minM class=ML>+</button>
-      <button id=minL class=ML>–</button>
-      <button id=hourM class=ML>+</button>
-      <button id=hourL class=ML>–</button>
-      <button id=dayM class=ML>+</button>
-      <button id=dayL class=ML>–</button>
+      <button id=pause class=selbtn>пауза</button>
+      <button id=sec data-tick=Seconds class=selbtn>1 сек.</button>
+      <button id=min data-tick=Minutes >1 мин.</button>
+      <button id=hour data-tick=Hours >1 час</button>
+      <button id=day data-tick=Date >1 день</button>
+      <button id=secM data-tick=Seconds class=ML>+</button>
+      <button id=secL data-tick=Seconds class=ML>–</button>
+      <button id=minM data-tick=Minutes class=ML>+</button>
+      <button id=minL data-tick=Minutes class=ML>–</button>
+      <button id=hourM data-tick=Hours class=ML>+</button>
+      <button id=hourL data-tick=Hours class=ML>–</button>
+      <button id=dayM data-tick=Date class=ML>+</button>
+      <button id=dayL data-tick=Date class=ML>–</button>
     </nav>
     <div id=clock>
       <span id=today>четверг</span>
@@ -77,6 +76,10 @@
       <span id=left3>26 секунд</span>
     </div>
   </div>
+  <script>
+    timing.onclick = e => TimeIT(e)
+  </script>
 
+  <script src=script.js></script>
 </body>
 </html>

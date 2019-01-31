@@ -2,6 +2,12 @@ function mur(what) { console.log(what) }
 
 function rit(str) { response.innerText = str }
 
+function toggle(el, prop, val1, val2) {
+  if (Array.isArray(el)) return el.forEach(el=>toggle(el,prop,val1,val2))
+  if (el[prop]!==undefined) return el[prop] = el[prop]===val1? val2:val1
+  el.style[prop] = el.style[prop]===val1? val2:val1
+}
+
 function SignUP() {
   if (!login.value && !mail.value)
     return rit("Для регистрации нужен Логин и/или Электронная почта")
@@ -54,4 +60,52 @@ function SignIN() {
     }
   }
   return rit("Пользователь с таким Логином или Электронной почтой не найден")
+}
+
+const pad = num => (''+num).padStart(2,'0')
+tick = 'Seconds'
+t = new Date()
+upDate()
+upTime()
+
+function upDate() {
+  date.innerText =
+    t.getFullYear()+'-'+pad(t.getMonth()+1)+'-'+pad(t.getDate())
+}
+function upTime() {
+  time.innerText =
+    pad(t.getHours())+':'+pad(t.getMinutes())+':'+pad(t.getSeconds())
+}
+
+function doTick() {
+  t['set'+tick](t['get'+tick]()+1)
+  upDate()
+  upTime()
+}
+
+function TimeIT(e) {
+  if (e.target==timing || e.target.className=='selbtn') return
+  if (e.target==go) tak = setInterval(doTick, 1000)
+  if (e.target==pause) clearInterval(tak)
+  if (e.target==pause || e.target==go) {
+    toggle(clock, 'boxShadow', "rgb(230, 230, 230) 0px 0px 0px 120px inset", '')
+    return toggle([pause, go], 'className', 'selbtn', '')
+  }
+  if (e.target==sec || e.target==min || e.target==hour || e.target==day) {
+    sec.className = min.className = hour.className = day.className = ''
+    tick = e.target.dataset.tick
+    return e.target.className = 'selbtn'
+  }
+  if (e.target.className = 'ML') {
+    if (e.target.innerText == '+') {
+      t['set'+e.target.dataset.tick](t['get'+e.target.dataset.tick]()+1)
+      upDate()
+      upTime()
+    }
+    else {
+      t['set'+e.target.dataset.tick](t['get'+e.target.dataset.tick]()-1)
+      upDate()
+      upTime()
+    }
+  }
 }

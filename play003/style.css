@@ -232,7 +232,7 @@ button {
   padding: 15px 8px;
   font-weight: normal;
 
-  background: #E6E6E6;
+  background: darkgray;
   border: 2px solid black;
 
   display: grid;
@@ -269,4 +269,7 @@ span#left0 {
 }
 #left3 {
   grid-area: left3;
+}
+.selbtn {
+  box-shadow: 0 0 15px 5px rgba(0, 47, 255, 0.753);
 }
