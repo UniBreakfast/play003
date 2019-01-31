@@ -12,7 +12,7 @@
       xhr.onload = () => cb(xhr.response)
       xhr.send()
     }
-    request('state.json', response=>state=JSON.parse(response))
+    request('state.json', response => state=JSON.parse(response))
   </script>
 </head>
 <body>
@@ -44,9 +44,39 @@
     ok.onclick = pupScreen.onclick = e =>
       e.target==pupScreen || e.target==ok ? pupScreen.style.display = 'none' :0
 
-    signin.onclick = e => { check(); return false }
+    signin.onclick = e => { SignIN(); return false }
+    signup.onclick = e => { SignUP(); return false }
 
   </script>
   <script src=script.js></script>
+
+  <div id=main>
+    <nav id=timing>
+      <button id=go>пуск</button>
+      <button id=pause>пауза</button>
+      <button id=sec>1 сек.</button>
+      <button id=min>1 мин.</button>
+      <button id=hour>1 час</button>
+      <button id=day>1 день</button>
+      <button id=secM class=ML>+</button>
+      <button id=secL class=ML>–</button>
+      <button id=minM class=ML>+</button>
+      <button id=minL class=ML>–</button>
+      <button id=hourM class=ML>+</button>
+      <button id=hourL class=ML>–</button>
+      <button id=dayM class=ML>+</button>
+      <button id=dayL class=ML>–</button>
+    </nav>
+    <div id=clock>
+      <span id=today>четверг</span>
+      <span id=date>2019-01-31</span>
+      <span id=time>15:51:34</span>
+      <span id=left0>до завтра осталось:</span>
+      <span id=left1>9 часов</span>
+      <span id=left2>8 минут</span>
+      <span id=left3>26 секунд</span>
+    </div>
+  </div>
+
 </body>
 </html>

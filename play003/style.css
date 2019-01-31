@@ -31,6 +31,8 @@ form {
   border: 2px solid black;
 
   display: grid;
+  display: none;
+
   grid-gap: 15px;
   grid-template:  "  lbl-l    login   login    either "
                   "  lbl-m    mail     mail    either "
@@ -95,6 +97,7 @@ button {
   width: 150px;
   height: 40px;
   font: bold 1rem Trebuchet MS, sans-serif;
+  cursor: pointer;
 }
 
 #pupScreen {
@@ -103,6 +106,7 @@ button {
   height: 100%;
   width: 100%;
   padding: 0 0 120px 299px;
+  background: #0004;
 }
 #pupEither {
   margin: auto;
@@ -121,4 +125,148 @@ button {
   height: 81px;
   margin-top: 20px;
   background: #F7EABE;
+}
+
+#main {
+  margin: auto;
+
+  /* for rounded corners */
+  border-radius: 40px;
+
+  padding: 30px 50px;
+
+  background: #F7EABE;
+  border: 2px solid black;
+
+}
+#timing>button {
+  height: auto;
+  width: 64px;
+  padding-bottom: 1px;
+}
+#timing {
+  border-radius: 20px;
+  width: 426px;
+  padding: 15px 20px;
+
+  background: #BEDBE8;
+  border: 2px solid black;
+
+  display: grid;
+
+  grid-gap: 4px 15px;
+  grid-template:  "   go  secM minM hourM dayM"
+                  "   go  sec  min  hour  day " 22px
+                  " pause sec  min  hour  day " 22px
+                  " pause secL minL hourL dayL"
+}
+#go {
+  grid-area: go;
+  background: #8FD14F;
+}
+#pause {
+  grid-area: pause;
+  background: #B5B5B5;
+}
+#sec {
+  grid-area: sec;
+  background: #FFFAE9;
+}
+#min {
+  grid-area: min;
+  background: #FEF445;
+}
+#hour {
+  grid-area: hour;
+  background: #FAC710;
+}
+#day {
+  grid-area: day;
+  background: #EEACA0;
+}
+#secM {
+  grid-area: secM;
+  background: #FFFAE9;
+}
+#secL {
+  grid-area: secL;
+  background: #FFFAE9;
+}
+#minM {
+  grid-area: minM;
+  background: #FEF445;
+}
+#minL {
+  grid-area: minL;
+  background: #FEF445;
+}
+#hourM {
+  grid-area: hourM;
+  background: #FAC710;
+}
+#hourL {
+  grid-area: hourL;
+  background: #FAC710;
+}
+#dayM {
+  grid-area: dayM;
+  background: #EEACA0;
+}
+#dayL {
+  grid-area: dayL;
+  background: #EEACA0;
+}
+#timing>button.ML {
+  width: 40px;
+  margin: auto;
+}
+
+#clock>span {
+  text-align: center;
+}
+#clock {
+  float: right;
+  margin-top: 5px;
+  border-radius: 20px;
+  width: 234px;
+  padding: 15px 8px;
+  font-weight: normal;
+
+  background: #E6E6E6;
+  border: 2px solid black;
+
+  display: grid;
+  grid-template:  "today today"
+                  " date date "
+                  " time time "
+                  "left0 left1"
+                  "left0 left2"
+                  "  .   left3"
+                  /  50%   50%
+}
+#today {
+  grid-area: today;
+  font-size: 26px;
+}
+#date {
+  grid-area: date;
+  font-size: 34px;
+}
+#time {
+  grid-area: time;
+  font-size: 44px;
+  font-weight: bold;
+}
+span#left0 {
+  grid-area: left0;
+  text-align: right;
+}
+#left1 {
+  grid-area: left1;
+}
+#left2 {
+  grid-area: left2;
+}
+#left3 {
+  grid-area: left3;
 }
