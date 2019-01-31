@@ -66,13 +66,10 @@ const pad = num => (''+num).padStart(2,'0')
 tick = 'Seconds'
 t = new Date()
 upDate()
-upTime()
 
 function upDate() {
   date.innerText =
     t.getFullYear()+'-'+pad(t.getMonth()+1)+'-'+pad(t.getDate())
-}
-function upTime() {
   time.innerText =
     pad(t.getHours())+':'+pad(t.getMinutes())+':'+pad(t.getSeconds())
 }
@@ -80,7 +77,6 @@ function upTime() {
 function doTick() {
   t['set'+tick](t['get'+tick]()+1)
   upDate()
-  upTime()
 }
 
 function TimeIT(e) {
@@ -100,12 +96,10 @@ function TimeIT(e) {
     if (e.target.innerText == '+') {
       t['set'+e.target.dataset.tick](t['get'+e.target.dataset.tick]()+1)
       upDate()
-      upTime()
     }
     else {
       t['set'+e.target.dataset.tick](t['get'+e.target.dataset.tick]()-1)
       upDate()
-      upTime()
     }
   }
 }
