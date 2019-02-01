@@ -18,7 +18,7 @@ body {
   background: #585555;
 }
 
-form {
+#form {
   /* for centering in the flex parent */
   margin: auto;
 

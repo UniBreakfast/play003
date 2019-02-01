@@ -16,19 +16,19 @@
   </script>
 </head>
 <body>
-  <form>
+  <div id=form>
     <label for=login id=lbl-l>Логин:</label>
     <label for=mail  id=lbl-m>Электронная почта:</label>
     <label for=pass  id=lbl-p>Пароль:</label>
     <input id=login>
     <input id=mail type=email>
     <input id=pass type=password>
-    <button id=signin onclick=return(false)>ВХОД</button>
-    <button id=signup onclick=return(false)>РЕГИСТРАЦИЯ</button>
-    <button id=either onclick=return(false)>или?</button>
+    <button id=signin>ВХОД</button>
+    <button id=signup>РЕГИСТРАЦИЯ</button>
+    <button id=either>или?</button>
     <div id=response>
       Одна форма для регистрации и входа! Введите ваши данные</div>
-  </form>
+  </div>
   <div id=pupScreen>
   <!-- <div id=pupScreen> -->
     <div id=pupEither>
@@ -40,12 +40,12 @@
     </div>
   </div>
   <script>
-    either.onclick = e => { pupScreen.style.display = 'flex'; return false }
+    either.onclick = e => pupScreen.style.display = 'flex'
     ok.onclick = pupScreen.onclick = e =>
       e.target==pupScreen || e.target==ok ? pupScreen.style.display = 'none' :0
 
-    signin.onclick = e => { SignIN(); return false }
-    signup.onclick = e => { SignUP(); return false }
+    signin.onclick = e => SignIN()
+    signup.onclick = e => SignUP()
 
   </script>
 

@@ -28,7 +28,7 @@ function SignUP() {
   if ( mail.value) user.mail  =  mail.value
   state.users.push(user)
   mur(JSON.stringify(state, null, 2))
-  return rit("Пользователь зарегистрирован. Заходим") && igi()
+  return rit("Пользователь зарегистрирован. Заходим")==igi()
 }
 
 function SignIN() {
@@ -38,7 +38,7 @@ function SignIN() {
   if (!mail.value) {   // введён только логин
     for (let u of state.users) {
       if (u.login==login.value) {
-        if (u.pass==pass.value) return rit("Заходим") && igi()
+        if (u.pass==pass.value) return rit("Заходим")==igi()
         else return rit("Неправильный Пароль")
       }
     }
@@ -47,7 +47,7 @@ function SignIN() {
   if (!login.value) {   // введён только мэйл
     for (let u of state.users) {
       if (u.mail==mail.value) {
-        if (u.pass==pass.value) return rit("Заходим") && igi()
+        if (u.pass==pass.value) return rit("Заходим")==igi()
         else return rit("Неправильный Пароль")
       }
     }
@@ -55,7 +55,7 @@ function SignIN() {
   }
   for (let u of state.users) {   // введены и логин, и мэйл
     if (u.mail==mail.value || u.login==login.value) {
-      if (u.pass==pass.value) return rit("Заходим") && igi()
+      if (u.pass==pass.value) return rit("Заходим")==igi()
       else return rit("Неправильный Пароль")
     }
   }
@@ -63,7 +63,7 @@ function SignIN() {
 }
 
 function igi() {
-  form[0].style.display = "none"
+  form.style.display = "none"
   main.style.display = "block"
 }
 
