@@ -3,83 +3,65 @@
 <head>
   <meta charset=UTF-8>
   <meta name=viewport content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title> play003 </title>
   <link rel=stylesheet href=style.css>
-  <script>
-    function request(file, cb) {
-      const xhr = new XMLHttpRequest()
-      xhr.open('GET', file)
-      xhr.onload = () => cb(xhr.response)
-      xhr.send()
-    }
-    request('state.json', response => state=JSON.parse(response))
-  </script>
+  <script src=prepare.js></script>
 </head>
 <body>
-  <div id=form>
-    <label for=login id=lbl-l>Логин:</label>
-    <label for=mail  id=lbl-m>Электронная почта:</label>
-    <label for=pass  id=lbl-p>Пароль:</label>
-    <input id=login>
-    <input id=mail type=email>
-    <input id=pass type=password>
-    <button id=signin>ВХОД</button>
-    <button id=signup>РЕГИСТРАЦИЯ</button>
-    <button id=either>или?</button>
-    <div id=response>
-      Одна форма для регистрации и входа! Введите ваши данные</div>
+  <div id=auth_form>
+    <label id=login_label for=login_field> Логин: </label>
+    <label id=mail_label  for=mail_field>  Электронная почта: </label>
+    <label id=pass_label  for=pass_field>  Пароль: </label>
+    <input id=login_field>
+    <input id=mail_field type=email>
+    <input id=pass_field type=password>
+    <button id=signin_btn onclick=trySignin()> ВХОД </button>
+    <button id=signup_btn onclick=trySignup()> РЕГИСТРАЦИЯ </button>
+    <button id=either_btn> или? </button>
+    <div id=response_line>
+      Одна форма для регистрации и входа! Введите ваши данные
+    </div>
   </div>
-  <div id=pupScreen>
-  <!-- <div id=pupScreen> -->
-    <div id=pupEither>
-      <span>Логин или Электронная почта - что-то одно обязательно. Если не привяжете Электронную почту, нельзя будет
-        восстановить
-        пароль в случае утраты.</span>
-      <button id=ok>Ok</button>
-      <!-- <button id=ok>Ok</button> -->
+  <div id=either_scr>
+    <div id=either_win>
+      <span> Логин или Электронная почта - что-то одно обязательно. Если не привяжете Электронную почту, нельзя будет восстановить пароль в случае утраты. </span>
+      <button id=ok_btn> Ok </button>
     </div>
   </div>
   <script>
-    either.onclick = e => pupScreen.style.display = 'flex'
-    ok.onclick = pupScreen.onclick = e =>
-      e.target==pupScreen || e.target==ok ? pupScreen.style.display = 'none' :0
-
-    signin.onclick = e => SignIN()
-    signup.onclick = e => SignUP()
-
+    either_btn.onclick = e => either_scr.style.display='flex'
+    either_scr.onclick = e => e.target==either_scr || e.target==ok_btn ?
+      either_scr.style.display = 'none' :0
   </script>
 
-  <div id=main>
-    <nav id=timing onclick=>
-      <button id=go>пуск</button>
-      <button id=pause class=selbtn>пауза</button>
-      <button id=sec data-tick=Seconds class=selbtn>1 сек.</button>
-      <button id=min data-tick=Minutes >1 мин.</button>
-      <button id=hour data-tick=Hours >1 час</button>
-      <button id=day data-tick=Date >1 день</button>
-      <button id=secM data-tick=Seconds class=ML>+</button>
-      <button id=secL data-tick=Seconds class=ML>–</button>
-      <button id=minM data-tick=Minutes class=ML>+</button>
-      <button id=minL data-tick=Minutes class=ML>–</button>
-      <button id=hourM data-tick=Hours class=ML>+</button>
-      <button id=hourL data-tick=Hours class=ML>–</button>
-      <button id=dayM data-tick=Date class=ML>+</button>
-      <button id=dayL data-tick=Date class=ML>–</button>
+  <div id=main_win>
+    <nav id=timing_ctrl onclick=>
+      <button id=go_btn>                  пуск </button>
+      <button id=pause_btn class=sel_btn> пауза </button>
+      <button id=sec_btn data-tick=Seconds class=sel_btn> 1 сек. </button>
+      <button id=min_btn data-tick=Minutes >             1 мин. </button>
+      <button id=hour_btn data-tick=Hours >              1 час  </button>
+      <button id=day_btn data-tick=Date >                1 день </button>
+      <button id=sec_add_btn data-tick=Seconds class=add_sub> + </button>
+      <button id=sec_sub_btn data-tick=Seconds class=add_sub> – </button>
+      <button id=min_add_btn data-tick=Minutes class=add_sub> + </button>
+      <button id=min_sub_btn data-tick=Minutes class=add_sub> – </button>
+      <button id=hour_add_btn data-tick=Hours class=add_sub> + </button>
+      <button id=hour_sub_btn data-tick=Hours class=add_sub> – </button>
+      <button id=day_add_btn data-tick=Date class=add_sub> + </button>
+      <button id=day_sub_btn data-tick=Date class=add_sub> – </button>
     </nav>
-    <div id=clock>
-      <span id=today>четверг</span>
-      <span id=date>2019-01-31</span>
-      <span id=time>15:51:34</span>
-      <span id=left0>до завтра осталось:</span>
-      <span id=left1>9 часов</span>
-      <span id=left2>8 минут</span>
-      <span id=left3>26 секунд</span>
+    <div id=clock_block>
+      <span id=today_line> четверг    </span>
+      <span id=date_line>  2019-01-31 </span>
+      <span id=time_line>  15:51:34   </span>
+      <span id=left0_line> до завтра осталось: </span>
+      <span id=left1_line> 9 часов </span>
+      <span id=left2_line> 8 минут </span>
     </div>
   </div>
-  <script>
-    timing.onclick = e => TimeIT(e)
-  </script>
-
+  <script> timing_ctrl.onclick = e => handleTime(e) </script>
   <script src=script.js></script>
+
 </body>
 </html>

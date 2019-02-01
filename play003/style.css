@@ -10,29 +10,20 @@
 
 
 body {
-  /* for centering the main container */
   display: flex;
-
   min-height: 100vh;
   font: bold 1rem Trebuchet MS, sans-serif;
   background: #585555;
 }
 
-#form {
-  /* for centering in the flex parent */
-  margin: auto;
-
-  /* for rounded corners */
-  border-radius: 40px;
-
+#auth_form {
   padding: 30px 50px;
-
+  margin: auto;
+  border-radius: 40px;
   background: #F7EABE;
   border: 2px solid black;
 
   display: grid;
-  /* display: none; */
-
   grid-gap: 15px;
   grid-template:  "  lbl-l    login   login    either "
                   "  lbl-m    mail     mail    either "
@@ -40,43 +31,43 @@ body {
                   "response response response response"
                   "    .     signup   signin     .    "
 }
-#lbl-l { /* login */
+#login_label { /* login */
   grid-area: lbl-l;
   text-align: right;
 }
-#lbl-m { /* mail */
+#mail_label { /* mail */
   grid-area: lbl-m;
   text-align: right;
 }
-#lbl-p { /* pass */
+#pass_label { /* pass */
   grid-area: lbl-p;
   text-align: right;
 }
-#login {
+#login_field {
   grid-area: login;
 }
-#mail {
+#mail_field {
   grid-area: mail;
 }
-#pass {
+#pass_field {
   grid-area: pass;
 }
-#either {
+#either_btn {
   grid-area: either;
   width: 55px;
   height: 81px;
   padding: 0 6px;
   background: #EEACA0;
 }
-#signup {
+#signup_btn {
   grid-area: signup;
   background: #FAC710;
 }
-#signin {
+#signin_btn {
   grid-area: signin;
   background: #8FD14F;
 }
-#response {
+#response_line {
   grid-area: response;
   font-size: .9rem;
   text-align: center;
@@ -100,7 +91,7 @@ button {
   cursor: pointer;
 }
 
-#pupScreen {
+#either_scr {
   position: fixed;
   display: none; /* switches to flex on click */
   height: 100%;
@@ -108,7 +99,7 @@ button {
   padding: 0 0 120px 299px;
   background: #0004;
 }
-#pupEither {
+#either_win {
   margin: auto;
   display: grid;
   grid-gap: 15px;
@@ -118,120 +109,112 @@ button {
   border: 2px solid black;
   padding: 20px 30px;
   height: 180px;
-
 }
-#ok {
+#ok_btn {
   width: 55px;
   height: 81px;
   margin-top: 20px;
   background: #F7EABE;
 }
 
-#main {
+#main_win {
+  padding: 30px 50px;
   margin: auto;
   display: none;
-  /* for rounded corners */
   border-radius: 40px;
-
-  padding: 30px 50px;
-
   background: #F7EABE;
   border: 2px solid black;
-
 }
-#timing>button {
+#timing_ctrl>button {
   height: auto;
   width: 64px;
   padding-bottom: 1px;
 }
-#timing {
+#timing_ctrl {
+  padding: 15px 20px;
   border-radius: 20px;
   width: 426px;
-  padding: 15px 20px;
-
   background: #BEDBE8;
   border: 2px solid black;
 
   display: grid;
-
   grid-gap: 4px 15px;
   grid-template:  "   go  secM minM hourM dayM"
                   "   go  sec  min  hour  day " 22px
                   " pause sec  min  hour  day " 22px
                   " pause secL minL hourL dayL"
 }
-#go {
+#go_btn {
   grid-area: go;
   background: #8FD14F;
 }
-#pause {
+#pause_btn {
   grid-area: pause;
   background: #B5B5B5;
 }
-#sec {
+#sec_btn {
   grid-area: sec;
   background: #FFFAE9;
 }
-#min {
+#min_btn {
   grid-area: min;
   background: #FEF445;
 }
-#hour {
+#hour_btn {
   grid-area: hour;
   background: #FAC710;
 }
-#day {
+#day_btn {
   grid-area: day;
   background: #EEACA0;
 }
-#secM {
+#sec_add_btn {
   grid-area: secM;
   background: #FFFAE9;
 }
-#secL {
+#sec_sub_btn {
   grid-area: secL;
   background: #FFFAE9;
 }
-#minM {
+#min_add_btn {
   grid-area: minM;
   background: #FEF445;
 }
-#minL {
+#min_sub_btn {
   grid-area: minL;
   background: #FEF445;
 }
-#hourM {
+#hour_add_btn {
   grid-area: hourM;
   background: #FAC710;
 }
-#hourL {
+#hour_sub_btn {
   grid-area: hourL;
   background: #FAC710;
 }
-#dayM {
+#day_add_btn {
   grid-area: dayM;
   background: #EEACA0;
 }
-#dayL {
+#day_sub_btn {
   grid-area: dayL;
   background: #EEACA0;
 }
-#timing>button.ML {
+#timing_ctrl>button.add_sub {
   width: 40px;
   margin: auto;
 }
 
-#clock>span {
+#clock_block>span {
   text-align: center;
 }
-#clock {
+#clock_block {
+  padding: 15px 8px;
   float: right;
   margin-top: 5px;
   border-radius: 20px;
   width: 234px;
-  padding: 15px 8px;
   font-weight: normal;
-
   background: darkgray;
   border: 2px solid black;
 
@@ -241,35 +224,31 @@ button {
                   " time time "
                   "left0 left1"
                   "left0 left2"
-                  "  .   left3"
                   /  50%   50%
 }
-#today {
+#today_line {
   grid-area: today;
   font-size: 26px;
 }
-#date {
+#date_line {
   grid-area: date;
   font-size: 34px;
 }
-#time {
+#time_line {
   grid-area: time;
   font-size: 44px;
   font-weight: bold;
 }
-span#left0 {
+span#left0_line {
   grid-area: left0;
   text-align: right;
 }
-#left1 {
+#left1_line {
   grid-area: left1;
 }
-#left2 {
+#left2_line {
   grid-area: left2;
 }
-#left3 {
-  grid-area: left3;
-}
-.selbtn {
+.sel_btn {
   box-shadow: 0 0 15px 5px rgba(0, 47, 255, 0.753);
 }

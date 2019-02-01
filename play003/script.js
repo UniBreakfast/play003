@@ -1,81 +1,81 @@
+const _ = undefined
 function mur(what) { console.log(what) }
 
-function rit(str) { response.innerText = str }
+let respond = str => response_line.innerText = str
 
 function toggle(el, prop, val1, val2) {
-  if (Array.isArray(el)) return el.forEach(el=>toggle(el,prop,val1,val2))
-  if (el[prop]!==undefined) return el[prop] = el[prop]===val1? val2:val1
-  el.style[prop] = el.style[prop]===val1? val2:val1
+  if (Array.isArray(el)) el.forEach(el=>toggle(el,prop,val1,val2))
+  else if (el[prop]!==_) el[prop] = el[prop]===val1? val2:val1
+  else       el.style[prop] = el.style[prop]===val1? val2:val1
 }
-
-function SignUP() {
-  if (!login.value && !mail.value)
-    return rit("Для регистрации нужен Логин и/или Электронная почта")
-  if (!pass.value) return rit("Придумайте Пароль, который не сможете забыть")
-  if (login.value) {
+function trySignup() {
+  if (!login_field.value && !mail_field.value)
+    return respond("Для регистрации нужен Логин и/или Электронная почта")
+  if (!pass_field.value)
+    return respond("Придумайте Пароль, который не сможете забыть")
+  if (login_field.value) {
     for (let u of state.users) {
-      if (u.login==login.value) return rit("Этот Логин уже занят")
+      if (u.login==login_field.value) return respond("Этот Логин уже занят")
     }
   }
-  if (mail.value) {
+  if (mail_field.value) {
     for (let u of state.users) {
-      if (u.mail==mail.value)
-        return rit("Пользователь с этой Электронной почтой уже есть")
+      if (u.mail==mail_field.value)
+        return respond("Пользователь с этой Электронной почтой уже есть")
     }
   }
-  let user = {pass: pass.value}
-  if (login.value) user.login = login.value
-  if ( mail.value) user.mail  =  mail.value
+  let user = {pass: pass_field.value}
+  if (login_field.value) user.login = login_field.value
+  if ( mail_field.value) user.mail  =  mail_field.value
   state.users.push(user)
-  mur(JSON.stringify(state, null, 2))
-  return rit("Пользователь зарегистрирован. Заходим")==igi()
+  respond("Пользователь зарегистрирован. Заходим") == signin()
 }
 
-function SignIN() {
-  if (!login.value && !mail.value)
-    return rit("Чтобы войти введите ваш Логин или Электронную почту")
-  if (!pass.value) return rit("Без Пароля войти нельзя")
-  if (!mail.value) {   // введён только логин
+function trySignin() {
+  if (!login_field.value && !mail_field.value)
+    return respond("Чтобы войти введите ваш Логин или Электронную почту")
+  if (!pass_field.value) return respond("Без Пароля войти нельзя")
+  if (!mail_field.value) {   // введён только логин
     for (let u of state.users) {
-      if (u.login==login.value) {
-        if (u.pass==pass.value) return rit("Заходим")==igi()
-        else return rit("Неправильный Пароль")
+      if (u.login==login_field.value) {
+        if (u.pass!=pass_field.value) return respond("Неправильный Пароль")
+        else return respond("Заходим") == signin()
       }
     }
-    return rit("Пользователь с таким Логином не найден")
+    return respond("Пользователь с таким Логином не найден")
   }
-  if (!login.value) {   // введён только мэйл
+  if (!login_field.value) {   // введён только мэйл
     for (let u of state.users) {
-      if (u.mail==mail.value) {
-        if (u.pass==pass.value) return rit("Заходим")==igi()
-        else return rit("Неправильный Пароль")
+      if (u.mail==mail_field.value) {
+        if (u.pass!=pass_field.value) return respond("Неправильный Пароль")
+        else return respond("Заходим") == signin()
       }
     }
-    return rit("Пользователь с такой Электронной почтой не найден")
+    return respond("Пользователь с такой Электронной почтой не найден")
   }
   for (let u of state.users) {   // введены и логин, и мэйл
-    if (u.mail==mail.value || u.login==login.value) {
-      if (u.pass==pass.value) return rit("Заходим")==igi()
-      else return rit("Неправильный Пароль")
+    if (u.mail==mail_field.value || u.login==login_field.value) {
+      if (u.pass!=pass_field.value) return respond("Неправильный Пароль")
+      else return respond("Заходим")==signin()
     }
   }
-  return rit("Пользователь с таким Логином или Электронной почтой не найден")
+  return respond("Нет пользователя с этими Логином и Электронной почтой")
 }
 
-function igi() {
-  form.style.display = "none"
-  main.style.display = "block"
+function signin() {
+  auth_form.style.display = "none"
+  main_win.style.display = "block"
 }
 
-const pad = num => (''+num).padStart(2,'0')
+let pad = num => (''+num).padStart(2,'0'),
 tick = 'Seconds'
 t = new Date()
 upDate()
 
 function upDate() {
-  date.innerText =
+  date_line.innerText =
     t.getFullYear()+'-'+pad(t.getMonth()+1)+'-'+pad(t.getDate())
-  time.innerText =
+  time_line.innerText =
     pad(t.getHours())+':'+pad(t.getMinutes())+':'+pad(t.getSeconds())
 }
 
@@ -84,20 +84,23 @@ function doTick() {
   upDate()
 }
 
-function TimeIT(e) {
-  if (e.target==timing || e.target.className=='selbtn') return
-  if (e.target==go) tak = setInterval(doTick, 1000)
-  if (e.target==pause) clearInterval(tak)
-  if (e.target==pause || e.target==go) {
-    toggle(clock, 'boxShadow', "rgb(230, 230, 230) 0px 0px 0px 120px inset", '')
-    return toggle([pause, go], 'className', 'selbtn', '')
+function handleTime(e) {
+  if (e.target==timing_ctrl || e.target.className=='sel_btn') return
+  if (e.target==go_btn) tak = setInterval(doTick, 1000)
+  if (e.target==pause_btn) clearInterval(tak)
+  if (e.target==pause_btn || e.target==go_btn) {
+    toggle([pause_btn, go_btn], 'className', 'sel_btn', '')
+    return toggle(clock_block, 'boxShadow',
+                  "rgb(230, 230, 230) 0px 0px 0px 120px inset", '')
   }
-  if (e.target==sec || e.target==min || e.target==hour || e.target==day) {
-    sec.className = min.className = hour.className = day.className = ''
+  if (e.target==sec_btn  || e.target==min_btn ||
+      e.target==hour_btn || e.target==day_btn) {
+    sec_btn.className  = min_btn.className = ''
+    hour_btn.className = day_btn.className = ''
     tick = e.target.dataset.tick
-    return e.target.className = 'selbtn'
+    return e.target.className = 'sel_btn'
   }
-  if (e.target.className = 'ML') {
+  if (e.target.className = 'add_sub') {
     if (e.target.innerText == '+') {
       t['set'+e.target.dataset.tick](t['get'+e.target.dataset.tick]()+1)
       upDate()
