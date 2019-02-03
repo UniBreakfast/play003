@@ -77,6 +77,16 @@ function upDate() {
     t.getFullYear()+'-'+pad(t.getMonth()+1)+'-'+pad(t.getDate())
   time_line.innerText =
     pad(t.getHours())+':'+pad(t.getMinutes())+':'+pad(t.getSeconds())
+
+  const secs_left = t.getSeconds()? 60 - t.getSeconds() : 0,
+  mins_left = 60 - t.getMinutes() - (secs_left? 1 : 0),
+  hours_left =  24 - t.getHours() -
+    (mins_left || hours_left==1 && secs_left? 1 : 0)
+
+  left1_line.innerText = hours_left? hours_left+' часов' :
+    (mins_left? mins_left+' минут' : '')
+  left2_line.innerText = hours_left>0 ? mins_left+' минут' :
+    (secs_left? secs_left+' секунд' : '')
 }
 
 function doTick() {
