@@ -219,12 +219,12 @@ button {
   border: 2px solid black;
 
   display: grid;
-  grid-template:  "today today"
-                  " date date "
-                  " time time "
-                  "left0 left1"
-                  "left0 left2"
-                  /  50%   50%
+  grid-template:  "today today today"
+                  " date date  date "
+                  " time time  time "
+                  "left0 left1 left2"
+                  "left0 left3 left4"
+                  /  55%  10%
 }
 #today_line {
   grid-area: today;
@@ -242,12 +242,25 @@ button {
 span#left0_line {
   grid-area: left0;
   text-align: right;
+  margin-right: 12px;
 }
-#left1_line {
+span#left1_line {
   grid-area: left1;
+  text-align: right;
 }
-#left2_line {
+span#left2_line {
   grid-area: left2;
+  text-align: left;
+  margin-left: 7px;
+}
+span#left3_line {
+  grid-area: left3;
+  text-align: right;
+}
+span#left4_line {
+  grid-area: left4;
+  text-align: left;
+  margin-left: 7px;
 }
 .sel_btn {
   box-shadow: 0 0 15px 5px rgba(0, 47, 255, 0.753);
