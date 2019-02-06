@@ -24,7 +24,8 @@ function trySignup() {
         return respond("Пользователь с этой Электронной почтой уже есть")
     }
   }
-  let user = {pass: pass_field.value}
+  const id = state.counters.next_user_id++,
+        user = {pass: pass_field.value, id}
   if (login_field.value) user.login = login_field.value
   if ( mail_field.value) user.mail  =  mail_field.value
   state.users.push(user)

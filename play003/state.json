@@ -1,17 +1,23 @@
 {
   "users": [
     {
+      "id": 1,
       "login": "Alpha",
       "pass": "Beta"
     },
     {
+      "id": 2,
       "mail": "user@mail.ua",
       "pass": "123"
     },
     {
+      "id": 3,
       "login": "NiceGuy",
       "mail": "guy@mail.com",
       "pass": "nice"
     }
-  ]
+  ],
+  "counters": {
+    "next_user_id": 3
+  }
 }

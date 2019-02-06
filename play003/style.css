@@ -31,15 +31,15 @@ body {
                   "response response response response"
                   "    .     signup   signin     .    "
 }
-#login_label { /* login */
+#login_label {
   grid-area: lbl-l;
   text-align: right;
 }
-#mail_label { /* mail */
+#mail_label {
   grid-area: lbl-m;
   text-align: right;
 }
-#pass_label { /* pass */
+#pass_label {
   grid-area: lbl-p;
   text-align: right;
 }

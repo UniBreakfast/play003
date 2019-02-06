@@ -8,6 +8,8 @@
   <script src=prepare.js></script>
 </head>
 <body>
+
+  <!-- Экран регистрации/входа -->
   <div id=auth_form>
     <label id=login_label for=login_field> Логин: </label>
     <label id=mail_label  for=mail_field>  Электронная почта: </label>
@@ -22,19 +24,34 @@
       Одна форма для регистрации и входа! Введите ваши данные
     </div>
   </div>
+
   <div id=either_scr>
     <div id=either_win>
       <span> Логин или Электронная почта - что-то одно обязательно. Если не привяжете Электронную почту, нельзя будет восстановить пароль в случае утраты. </span>
       <button id=ok_btn> Ok </button>
     </div>
   </div>
+
   <script>
+    login_field.focus()
+    auth_form.onkeypress = e => {
+      if (e.keyCode==13) {
+        if (either_scr.style.display=='flex') {
+          either_scr.style.display = 'none'
+          e.preventDefault()
+        }
+        else trySignin()
+      }
+    }
     either_btn.onclick = e => either_scr.style.display='flex'
     either_scr.onclick = e => e.target==either_scr || e.target==ok_btn ?
       either_scr.style.display = 'none' :0
   </script>
 
+  <!-- Главный экран после входа -->
   <div id=main_win>
+
+    <!-- Машина времени -->
     <nav id=timing_ctrl onclick=>
       <button id=go_btn>                  пуск </button>
       <button id=pause_btn class=sel_btn> пауза </button>
@@ -51,6 +68,8 @@
       <button id=day_add_btn data-tick=Date class=add_sub> + </button>
       <button id=day_sub_btn data-tick=Date class=add_sub> – </button>
     </nav>
+
+    <!-- Блок с часами -->
     <div id=clock_block>
       <span id=today_line> четверг    </span>
       <span id=date_line>  2019-01-31 </span>
@@ -62,6 +81,7 @@
       <span id=left4_line> минут </span>
     </div>
   </div>
+
   <script> timing_ctrl.onclick = e => handleTime(e) </script>
   <script src=timeLeft2by2.js></script>
   <script src=script.js></script>
