@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang=ru>
+<html lang="ru">
 <head>
-  <meta charset=UTF-8>
-  <meta name=viewport content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> play003 </title>
-  <link rel=stylesheet href=style.css>
-  <script src=prepare.js></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="prepare.js"></script>
 </head>
 <body>
 
   <!-- Экран регистрации/входа -->
-  <div id=auth_form>
-    <label id=login_label for=login_field> Логин: </label>
-    <label id=mail_label  for=mail_field>  Электронная почта: </label>
-    <label id=pass_label  for=pass_field>  Пароль: </label>
-    <input id=login_field>
-    <input id=mail_field type=email>
-    <input id=pass_field type=password>
-    <button id=signin_btn onclick=trySignin()> ВХОД </button>
-    <button id=signup_btn onclick=trySignup()> РЕГИСТРАЦИЯ </button>
-    <button id=either_btn> или? </button>
-    <div id=response_line>
+  <div id="auth_form">
+    <label id="login_label" for="login_field"> Логин: </label>
+    <label id="mail_label"  for="mail_field">  Электронная почта: </label>
+    <label id="pass_label"  for="pass_field">  Пароль: </label>
+    <input id="login_field">
+    <input id="mail_field" type="email">
+    <input id="pass_field" type="password">
+    <button id="signin_btn" onclick=trySignin()> ВХОД </button>
+    <button id="signup_btn" onclick=trySignup()> РЕГИСТРАЦИЯ </button>
+    <button id="either_btn"> или? </button>
+    <div id="response_line">
       Одна форма для регистрации и входа! Введите ваши данные
     </div>
   </div>
 
-  <div id=either_scr>
-    <div id=either_win>
+  <div id="either_scr">
+    <div id="either_win">
       <span> Логин или Электронная почта - что-то одно обязательно. Если не привяжете Электронную почту, нельзя будет восстановить пароль в случае утраты. </span>
-      <button id=ok_btn> Ok </button>
+      <button id="ok_btn"> Ok </button>
     </div>
   </div>
 
@@ -49,42 +49,42 @@
   </script>
 
   <!-- Главный экран после входа -->
-  <div id=main_win>
+  <div id="main_win">
 
     <!-- Машина времени -->
-    <nav id=timing_ctrl onclick=>
-      <button id=go_btn>                  пуск </button>
-      <button id=pause_btn class=sel_btn> пауза </button>
-      <button id=sec_btn data-tick=Seconds class=sel_btn> 1 сек. </button>
-      <button id=min_btn data-tick=Minutes >             1 мин. </button>
-      <button id=hour_btn data-tick=Hours >              1 час  </button>
-      <button id=day_btn data-tick=Date >                1 день </button>
-      <button id=sec_add_btn data-tick=Seconds class=add_sub> + </button>
-      <button id=sec_sub_btn data-tick=Seconds class=add_sub> – </button>
-      <button id=min_add_btn data-tick=Minutes class=add_sub> + </button>
-      <button id=min_sub_btn data-tick=Minutes class=add_sub> – </button>
-      <button id=hour_add_btn data-tick=Hours class=add_sub> + </button>
-      <button id=hour_sub_btn data-tick=Hours class=add_sub> – </button>
-      <button id=day_add_btn data-tick=Date class=add_sub> + </button>
-      <button id=day_sub_btn data-tick=Date class=add_sub> – </button>
+    <nav id="timing_ctrl" onclick="">
+      <button id="go_btn">                  пуск </button>
+      <button id="pause_btn" class="sel_btn"> пауза </button>
+      <button id="sec_btn" data-tick="Seconds" class="sel_btn"> 1 сек. </button>
+      <button id="min_btn" data-tick="Minutes" >             1 мин. </button>
+      <button id="hour_btn" data-tick="Hours" >              1 час  </button>
+      <button id="day_btn" data-tick="Date" >                1 день </button>
+      <button id="sec_add_btn" data-tick="Seconds" class="add_sub"> + </button>
+      <button id="sec_sub_btn" data-tick="Seconds" class="add_sub"> – </button>
+      <button id="min_add_btn" data-tick="Minutes" class="add_sub"> + </button>
+      <button id="min_sub_btn" data-tick="Minutes" class="add_sub"> – </button>
+      <button id="hour_add_btn" data-tick="Hours" class="add_sub"> + </button>
+      <button id="hour_sub_btn" data-tick="Hours" class="add_sub"> – </button>
+      <button id="day_add_btn" data-tick="Date" class="add_sub"> + </button>
+      <button id="day_sub_btn" data-tick="Date" class="add_sub"> – </button>
     </nav>
 
     <!-- Блок с часами -->
-    <div id=clock_block>
-      <span id=today_line> четверг    </span>
-      <span id=date_line>  2019-01-31 </span>
-      <span id=time_line>  15:51:34   </span>
-      <span id=left0_line> до завтра осталось: </span>
-      <span id=left1_line> 9 </span>
-      <span id=left2_line> часов </span>
-      <span id=left3_line> 8 </span>
-      <span id=left4_line> минут </span>
+    <div id="clock_block">
+      <span id="today_line"> четверг    </span>
+      <span id="date_line">  2019-01-31 </span>
+      <span id="time_line">  15:51:34   </span>
+      <span id="left0_line"> до завтра осталось: </span>
+      <span id="left1_line"> 9 </span>
+      <span id="left2_line"> часов </span>
+      <span id="left3_line"> 8 </span>
+      <span id="left4_line"> минут </span>
     </div>
   </div>
 
   <script> timing_ctrl.onclick = e => handleTime(e) </script>
-  <script src=timeLeft2by2.js></script>
-  <script src=script.js></script>
+  <script src="timeLeft2by2.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
