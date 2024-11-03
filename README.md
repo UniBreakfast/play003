@@ -1,4 +1,4 @@
-# play003
+# [play003](https://github.com/UniBreakfast/play003)
 ## A nice auth form and a clock / time machine behind it
 ### input any login and password and press РЕГИСТРАЦИЯ
 
